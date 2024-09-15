@@ -14,6 +14,7 @@ class NumberOperations:
             else:
                 print(int(num), end=", ")
 
+
     def remake_array_to_float(self, numbers):
         print("  b. Всі числа переведені в Float: [", end="")
         for i, num in enumerate(numbers):
@@ -30,23 +31,15 @@ class NumberOperations:
         elif isinstance(number, float):
             float_list.append(number)
             print("Число додано у список Float")
-# Python doesn't have separate Short/Byte types
-        elif isinstance(number, float):
-            double_list.append(number)
-            print("Число додано у список Double")
-        elif isinstance(number, int):
-            long_list.append(number)
-            print("Число додано у список Long")
 
     # Method to calculate the sum of the square roots
     def sum_of_sqrt(self, number_list):
         total_sum = sum(math.pow(num, 2) for num in number_list)
         print(f"3. Сума квадратів елементу списку: {total_sum}")
 
-
-
 def main():
-    integer_num = 2
+
+    integer_num = 3000
     float_num = 3.43
     byte_num = 1
     short_num = 2
@@ -60,9 +53,11 @@ def main():
     double_list = []
     long_list = []
 
-    numbers = []
+    numbers = [10.0, 20.5, 30.0, 40.7, 50.0, 60.3, 70.0, 80.1, 90.0, 100.9]
 
     operations = NumberOperations()
+    
+
     operations.add_to_list(numbers, integer_num, float_num, byte_num, short_num, long_num, double_num)
     print(f"1. Всі числа: {numbers}")
     
