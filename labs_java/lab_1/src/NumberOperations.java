@@ -1,6 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 
 public class NumberOperations {
     public static void main(String[] args) {
@@ -10,8 +14,13 @@ public class NumberOperations {
         float FloatNum = 3.43f;
         byte ByteNum = 1;
         short ShortNum = 2;
-        long LongNum = 243234234;
+        long LongNum = 243234234L;
         double DoubleNum = -34243424.3434432;
+        int Int = 1111111;
+        System.out.println(BigInteger.valueOf(Int));
+
+        BigDecimal bigdecimal = new BigDecimal("2323.45654611111");
+        BigInteger bigint = new BigInteger("4555556645654611111");
 
         List<Integer> IntList = new ArrayList<>();
         List<Float> FloatList = new ArrayList<>();
@@ -19,13 +28,18 @@ public class NumberOperations {
         List<Short> ShortList = new ArrayList<>();
         List<Double> DoubleList = new ArrayList<>();
         List<Long> LongList = new ArrayList<>();
+        List<BigDecimal> bigdecimals= new ArrayList<>();
+        List<BigInteger> bigintegers= new ArrayList<>();
+
+        Numbers.add(bigdecimal);
+        Numbers.add(bigint);
 
         NumberOperations operations = new NumberOperations();
         operations.addToList(Numbers, IntegerNum, FloatNum, ByteNum, ShortNum, LongNum, DoubleNum);
         System.out.println("1. Всі числа: " + Numbers);
         operations.remakeArrayToInt(Numbers);
         operations.remakeArrayToFloat(Numbers);
-        operations.addNumByType(DoubleNum, IntList, FloatList, ShortList, ByteList, DoubleList, LongList);
+        operations.addNumByType(bigint, IntList, FloatList, ShortList, ByteList, DoubleList, LongList, bigdecimals, bigintegers);
         operations.sumOfSqrt(Numbers);
     }
         // Add numbers to the list
@@ -63,8 +77,10 @@ public class NumberOperations {
             }
         }
 
+
+
         // Add numbers to specific lists based on their type
-        public void addNumByType(Number number, List<Integer> IntList, List<Float> FloatList, List<Short> ShortList, List<Byte> ByteList, List<Double> DoubleList, List<Long> LongList) {
+        public void addNumByType(Number number, List<Integer> IntList, List<Float> FloatList, List<Short> ShortList, List<Byte> ByteList, List<Double> DoubleList, List<Long> LongList, List<BigDecimal> bigdecimals, List<BigInteger> bigintegers) {
             System.out.print("2. ");
             if (number instanceof Integer) {
                 IntList.add(number.intValue());
@@ -95,6 +111,11 @@ public class NumberOperations {
                 LongList.add(number.longValue());
                 System.out.println("Число додано у список Long:");
                 System.out.println(LongList);
+            }
+            else if (number instanceof BigInteger) {
+                bigintegers.add((BigInteger) number);
+                System.out.println("Число додано у список BigInteger:");
+                System.out.println(bigintegers);
             }
         }
 
