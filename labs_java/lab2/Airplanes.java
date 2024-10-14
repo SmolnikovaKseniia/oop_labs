@@ -37,11 +37,21 @@ abstract class Airplanes {
         return cargoCapacity;
     }
 
+    // Correct placement of getAircraftInfo() inside the class
+    public String getAircraftInfo() {
+        return "Model: " + model + ", Range: " + range + " km, Fuel: " + fuel + " L, Passengers: " + passengersCapacity + ", Cargo: " + cargoCapacity + " kg";
+    }
 }
 
 class Boeing extends Airplanes {
     public Boeing(String model, int range, int fuel, int passengersCapacity, int cargoCapacity) {
         super(model, range, fuel, passengersCapacity, cargoCapacity);
+    }
+
+    // Overriding the method to provide specific details for Boeing
+    @Override
+    public String getAircraftInfo() {
+        return "Boeing Aircraft - " + super.getAircraftInfo();
     }
 }
 
@@ -49,11 +59,23 @@ class Embraer extends Airplanes {
     public Embraer(String model, int range, int fuel, int passengersCapacity, int cargoCapacity) {
         super(model, range, fuel, passengersCapacity, cargoCapacity);
     }
+
+    // Overriding the method to provide specific details for Embraer
+    @Override
+    public String getAircraftInfo() {
+        return "Embraer Aircraft - " + super.getAircraftInfo();
+    }
 }
 
 class Airbus extends Airplanes {
     public Airbus(String model, int range, int fuel, int passengersCapacity, int cargoCapacity) {
         super(model, range, fuel, passengersCapacity, cargoCapacity);
+    }
+
+    // Overriding the method to provide specific details for Airbus
+    @Override
+    public String getAircraftInfo() {
+        return "Airbus Aircraft - " + super.getAircraftInfo();
     }
 }
 
@@ -94,7 +116,13 @@ class Airline {
                 return airplane;
             }
         }
-        return null; // Якщо літак не знайдено
+        return null; // If no airplane is found
+    }
+
+    public void displayFleetInfo() {
+        for (Airplanes airplane : fleet) {
+            System.out.println(airplane.getAircraftInfo());
+        }
     }
 
     public List<Airplanes> getFleet() {
