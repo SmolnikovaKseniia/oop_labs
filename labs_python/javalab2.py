@@ -79,6 +79,8 @@ class Airline:
     def sort_airplanes_by_range(self):
         self._fleet.sort(key=lambda airplane: airplane.range)
 
+    
+
     def find_airplanes_by_fuel_range(self, min_fuel, max_fuel):
         return [airplane for airplane in self._fleet if min_fuel <= airplane.fuel <= max_fuel]
 
@@ -108,9 +110,12 @@ def main():
 
     # Sorting airplanes by range
     airline.sort_airplanes_by_range()
+
     print("Airplanes sorted by range:")
     airline.display_fleet_info()
 
+    first_element = airline.fleet[0].get_aircraft_info()
+    print("Airplane with smallest range:",first_element)
     # Finding airplanes by fuel range
     min_fuel = 4000
     max_fuel = 9000

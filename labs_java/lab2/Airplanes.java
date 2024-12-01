@@ -37,7 +37,7 @@ abstract class Airplanes {
         return cargoCapacity;
     }
 
-    // Correct placement of getAircraftInfo() inside the class
+
     public String getAircraftInfo() {
         return "Model: " + model + ", Range: " + range + " km, Fuel: " + fuel + " L, Passengers: " + passengersCapacity + ", Cargo: " + cargoCapacity + " kg";
     }

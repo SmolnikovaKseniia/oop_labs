@@ -30,8 +30,5 @@ public class Main {
         else {
             System.out.println("Літак зі заданим діапазоном споживання пального не знайдено.");
         }
-
-        System.out.println("Інформація про всі літаки в авіакомпанії:");
-        airline.displayFleetInfo();
     }
 }
