@@ -8,4 +8,3 @@ public class AccessProxy {
     public String getResource(String resourceUrl) {
         return "Resource content for " + resourceUrl;
     }
-}
