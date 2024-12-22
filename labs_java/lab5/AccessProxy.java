@@ -6,5 +6,9 @@ public class AccessProxy {
     }
 
     public String getResource(String resourceUrl) {
+        if (!"admin".equals(userRole)) {
+            throw new PermissionException("Access denied for role: " + userRole);
+        }
         return "Resource content for " + resourceUrl;
     }
+}
