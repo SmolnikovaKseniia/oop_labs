@@ -3,10 +3,12 @@ import java.util.Map;
 
 public class AccessProxy {
     private final String userRole;
+    private final ResourceHandler resourceHandler;
     private final Map<String, String> cache;
 
     public AccessProxy(String userRole) {
         this.userRole = userRole;
+        this.resourceHandler = new ConcreteResourceHandler();
         this.cache = new HashMap<>();
     }
 
@@ -14,7 +16,6 @@ public class AccessProxy {
         if (!"admin".equals(userRole)) {
             throw new PermissionException("Access denied for role: " + userRole);
         }
-
-        return cache.computeIfAbsent(resourceUrl, url -> "Resource content for " + url);
+        return cache.computeIfAbsent(resourceUrl, resourceHandler::handleRequest);
     }
 }
