@@ -19,5 +19,14 @@ class ProxyTests {
         assertEquals("Access denied for role: guest", exception.getMessage());
     }
 
+    @Test
+    void cachedContentIsReturnedOnRepeatedRequests() {
+        AccessProxy proxy = new AccessProxy("admin");
+        String firstAccess = proxy.getResource("example.com/resource");
+        String secondAccess = proxy.getResource("example.com/resource");
+        assertSame(firstAccess, secondAccess, "Cached content must match");
+    }
+
+
 }
 
